@@ -1,0 +1,9 @@
+**/node_modules/
+*.log
+*.swp
+*.swo
+**/.next
+.DS_Store
+.npmrc
+**/.DS_Store
+**/.npmrc
