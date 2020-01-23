@@ -10,7 +10,7 @@ const listContainer = {
 
 const options = [
   { label: 'SunnyVale', value: 2502265},
-  { label: 'California', value: 902},
+  { label: 'Lotbiniere', value: 902},
   { label: 'Loggieville', value: 889}
 ];
 

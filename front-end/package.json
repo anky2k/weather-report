@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.27",
+    "@emotion/core": "^10.0.27",    
     "bootstrap": "^4.4.1",
     "emotion": "^10.0.27",
     "next": "9.2.0",

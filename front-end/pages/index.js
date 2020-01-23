@@ -6,19 +6,18 @@ import { withRedux } from '../libs/redux-enabler'
 const Home = (props) => {
   const { store } = props
   return (  
-    <div>
+    <div className='bg'>
       <Head>
         <title>Home</title>
-        <script src="https://kit.fontawesome.com/bfe233961f.js" crossorigin="anonymous"></script>
         <link
-          rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-        <div className="hero">     
+          rel='stylesheet'
+          href='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+          integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T'
+          crossorigin='anonymous'
+        />        
+        <link rel='icon' href='/favicon.ico' />
+      </Head>        
+        <div className='hero'>     
             <h1 align='center'>{"how's the weather like in...."}</h1>
             <ConWeatherReport />
         </div>        
@@ -37,36 +36,29 @@ const Home = (props) => {
         .title,
         .description {
           text-align: center;
+        }    
+
+        img.bg {
+          /* Set rules to fill background */
+          min-height: 100%;
+          min-width: 1024px;
+          
+          /* Set up proportionate scaling */
+          width: 100%;
+          height: auto;
+          
+          /* Set up positioning */
+          position: fixed;
+          top: 0;
+          left: 0;
         }
-        .row {
-          max-width: 880px;
-          margin: 80px auto 40px;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-around;
-        }
-        .card {
-          padding: 18px 18px 24px;
-          width: 220px;
-          text-align: left;
-          text-decoration: none;
-          color: #434343;
-          border: 1px solid #9b9b9b;
-        }
-        .card:hover {
-          border-color: #067df7;
-        }
-        .card h3 {
-          margin: 0;
-          color: #067df7;
-          font-size: 18px;
-        }
-        .card p {
-          margin: 0;
-          padding: 12px 0 0;
-          font-size: 13px;
-          color: #333;
-        }
+        
+        @media screen and (max-width: 1024px) { /* Specific to this particular image */
+          img.bg {
+            left: 50%;
+            margin-left: -512px;   /* 50% */
+          }
+        }        
       `}</style>
     </div>
   )
