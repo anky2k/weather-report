@@ -26,7 +26,7 @@ Move to the weather-report folder
 $ cd weather-report
 ```
 
-Here we have back-end and front-end apps, will start by firiing up the backend first. We need to install dependancies and start the server
+Here we have back-end and front-end apps, will start by firing up the backend first. We need to install dependancies and start the server
 
 ```sh
 $ cd back-end
@@ -37,6 +37,7 @@ $ pm2 start ./server
 Once the server has started we can now start the webapp, head back to the git root folder and move to the front-end folder
 
 ```sh
+$ cd ..
 $ cd front-end
 $ npm i
 $ npm run build
