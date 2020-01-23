@@ -23,7 +23,7 @@ $ git clone https://github.com/anky2k/weather-report.git
 
 Move to the weather-report folder
 ```sh
-$ git clone https://github.com/anky2k/weather-report.git
+$ cd weather-report
 ```
 
 Here we have back-end and front-end apps, will start by firiing up the backend first. We need to install dependancies and start the server
