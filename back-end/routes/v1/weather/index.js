@@ -35,7 +35,7 @@ const weatherData = async (fastify, options = {}) => {
               if (err) {
                   reject(err)
               } else {
-                  resolve(data)
+                  resolve(JSON.parse(data))
               }
           }
         );
@@ -47,9 +47,7 @@ const weatherData = async (fastify, options = {}) => {
     const { query = {} } = request
     const { zip = '' } = query
     if(!zip) {
-      reply.code(412).send({'err': {
-        'message': 'Please pass zipcode(s)'
-      }})
+      reply.code(412).send({ 'error': 'Please pass zipcode(s)' })
       return
     }
     try {
@@ -60,7 +58,8 @@ const weatherData = async (fastify, options = {}) => {
       });
       weatherData = await Promise.all(apis)
     } catch (e) {
-      weatherData = []
+      reply.code(404).send({'error': 'Couldnot fetch weather details'})
+      return
     }    
     reply.code(200).send({'payload': weatherData})
   })

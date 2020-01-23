@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useState, useEffect } from "react"
 /** @jsx jsx */ import { jsx, css } from '@emotion/core'
 import ReactMultiSelectCheckboxes from 'react-multiselect-checkboxes';
-
+import Report from './report'
 const listContainer = {
   'margin-top': '20px',
   'display': 'flex',
@@ -16,6 +16,7 @@ const options = [
 
 const WeatherReport = (props) => {
   const [zipCodes, setZipCodes] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (selectedItem = [])  => {
     let zipCodes = ''
@@ -29,22 +30,37 @@ const WeatherReport = (props) => {
     if(!zipCodes){
       alert('Please select a city')
     }
+    setIsLoading(true)
     props.getWeatherData(zipCodes)
   }
 
+  const weatherReport = props['weather-report']
+  const { payload = null } = weatherReport
+  const { error = null } = weatherReport
+
+  useEffect ( () => {
+    if(payload && payload.length > 0){
+      setIsLoading(false)
+    }
+    if(error){
+      setIsLoading(false)
+    }
+  }, [payload, error])
+  
   return (
     <div>
-    <div css={listContainer}>
+      <div css={listContainer}>
         <div>
-          <ReactMultiSelectCheckboxes 
-           onChange={handleChange}
+          <ReactMultiSelectCheckboxes          
+          onChange={handleChange}
           placeholderButtonLabel={'Select...'}
           options={options} />
         </div>
         <div css={css`
           padding-left: 20px;
-        `}> 
+        `}>           
           <button 
+            disabled={isLoading}
             onClick={onFecthData}
             css={css`
             	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -69,9 +85,20 @@ const WeatherReport = (props) => {
               position:relative;
               top:1px;
             }
-          `}>Fetch</button>                 
+          `}>{
+            (isLoading ? 'Loading...' : 'Fetch')
+          }</button>                 
         </div>     
       </div>        
+      <div css={css`
+        margin-top: 10px;
+      `}>
+        <Report
+          error={error}
+          isLoading={isLoading}
+          data={payload}
+         />
+      </div>      
     </div>
   )
 }

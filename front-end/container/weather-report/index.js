@@ -8,7 +8,6 @@ function mapStateToProps (state) {
 }
 
 function ConWeatherReport (props) {
-  console.log(props)
   return (
     <Fragment>
       <WeatherReport
